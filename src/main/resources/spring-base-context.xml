@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation=" 
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	   http://www.springframework.org/schema/aop  
+       http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<aop:aspectj-autoproxy />
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- ========================= GENERAL DEFINITIONS ========================= -->
+	<!-- Configurer that replaces ${...} placeholders with values from properties 
+		files -->
+	<!-- (in this case, mail and JDBC related properties) -->
+	<bean id="persistence.propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:META-INF/hibernate.properties</value>
+				<value>classpath*:META-INF/jdbc.properties</value>
+				<!-- <value>classpath*:META-INF/jdbc.MYSQL.properties</value> -->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="persistence.dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:unqdb" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+		<property name="defaultAutoCommit" value="false" />
+		<property name="poolPreparedStatements" value="true" />
+		<property name="initialSize" value="20" />
+		<property name="maxActive" value="30" />
+		<property name="maxIdle" value="25" />
+
+	</bean>
+
+	<!-- Defines a global session factory that will be used by all modules. -->
+	<bean id="persistence.sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+
+		<property name="dataSource" ref="persistence.dataSource" />
+
+		<property name="packagesToScan" value="com.unq.estip.pada.model" />
+
+		<property name="hibernateProperties">
+			<props>
+				<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+
+				<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory
+
+				</prop>
+			</props>
+		</property>
+
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+		<property name="jdbcExceptionTranslator" ref="persistence.jdbcExceptionTranslator" />
+	</bean>
+
+	<bean name="persistence.jdbcExceptionTranslator"
+		class="org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator">
+		<constructor-arg>
+			<ref bean="persistence.dataSource" />
+		</constructor-arg>
+	</bean>
+
+
+	<!-- ________________________________________ -->
+	<!-- ______________ Model Beans______________ -->
+	<!-- ________________________________________ -->
+
+	<!-- PRODUCT -->
+	<bean id="productDao" class="com.unq.estip.pada.persistence.ProductDAO">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="productService" class="com.unq.estip.pada.service.ProductService">
+		<property name="productDAO" ref="productDao" />
+	</bean>
+	<bean id="productRest" class="com.unq.estip.pada.rest.ProductRest">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<bean id="ingredientDao" class="com.unq.estip.pada.persistence.IngredientDAO">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="ingredientService" class="com.unq.estip.pada.service.IngredientService">
+		<property name="ingredientDAO" ref="ingredientDao" />
+	</bean>
+	<bean id="ingredientRest" class="com.unq.estip.pada.rest.IngredientRest">
+		<property name="ingredientService" ref="ingredientService" />
+	</bean>
+	
+	
+
+</beans>
