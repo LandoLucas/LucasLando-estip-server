@@ -274,17 +274,15 @@
 			<version>1.2.17</version>
 		</dependency>
 
-		<!-- APACHE POI -->
 		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.10-FINAL</version>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>8.0.0.RC0</version>
 		</dependency>
-
 		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.10-FINAL</version>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>8.0.0.RC0</version>
 		</dependency>
 
 	</dependencies>
@@ -348,6 +346,33 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			
+			<!-- The maven app assembler plugin will generate a script that sets up 
+				the classpath and runs your project -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<configuration>
+					<assembleDirectory>target</assembleDirectory>
+					<generateRepository>true</generateRepository>
+					<programs>
+						<program>
+							<mainClass>com.unq.estip.pada.rest.JettyServer</mainClass>
+							<name>webapp</name>
+						</program>
+					</programs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 		</plugins>
 	</build>
 
