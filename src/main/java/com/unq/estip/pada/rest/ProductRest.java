@@ -63,6 +63,7 @@ public class ProductRest {
     @Path("/all")
     @Produces("application/json")
     public Response getAllProducts() {
+		System.out.println("delete me");
     	List<Product> ps = this.productService.findAll();
     	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(ps).build();
     }
