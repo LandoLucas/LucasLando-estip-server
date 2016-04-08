@@ -1,5 +1,7 @@
 package com.unq.estip.pada.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -11,6 +13,7 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
 
+import com.unq.estip.pada.model.Ingredient;
 import com.unq.estip.pada.model.Product;
 import com.unq.estip.pada.service.ProductService;
 
@@ -55,6 +58,14 @@ public class ProductRest {
 		productService.save(name , price);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
+	
+	@GET
+    @Path("/all")
+    @Produces("application/json")
+    public Response getAllProducts() {
+    	List<Product> ps = this.productService.findAll();
+    	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(ps).build();
+    }
 	
 
 

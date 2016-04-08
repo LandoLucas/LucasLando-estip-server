@@ -1,5 +1,7 @@
 package com.unq.estip.pada.service;
 
+import java.util.List;
+
 import org.joda.money.Money;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +39,10 @@ public class ProductService {
 		product.setName(name);
 		product.setPrice(money);
 		this.save(product);
+	}
+
+	public List<Product> findAll() {
+		return this.productDAO.findAll();
 	}
 	
 }
