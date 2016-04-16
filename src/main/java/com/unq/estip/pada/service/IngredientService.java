@@ -20,8 +20,8 @@ public class IngredientService {
 	}
 	
 	@Transactional
-	public void save(String name){
-		Ingredient i = new Ingredient(name);
+	public void save(String name, Double price, Double quantity, String brand){
+		Ingredient i = new Ingredient(name, price, quantity, brand);
 		this.ingredientDAO.save(i);
 	}
 	

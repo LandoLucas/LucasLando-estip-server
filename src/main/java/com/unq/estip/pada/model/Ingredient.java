@@ -19,7 +19,16 @@ public class Ingredient {
 	
 	@Column(unique=true)
 	private String name;
-
+	
+	@Column
+	private Double price;
+	
+	@Column
+	private Double quantity;
+	
+	@Column
+	private String brand;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -40,9 +49,37 @@ public class Ingredient {
 		super();
 	}
 
-	public Ingredient(String name) {
-		super();
-		this.name = name;
+	public Double getPrice() {
+		return price;
 	}
 
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
+	}
+
+	public Ingredient(String name, Double price, Double quantity, String brand) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+		this.brand = brand;
+	}
+
+	
 }

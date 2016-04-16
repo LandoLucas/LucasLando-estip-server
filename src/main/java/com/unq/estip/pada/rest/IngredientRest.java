@@ -33,8 +33,10 @@ public class IngredientRest {
 	@POST
 	@Path("/save")
 	@Consumes("application/x-www-form-urlencoded")
-	public Response saveOrUpdateIngredient(@FormParam("name") String name) {
-		ingredientService.save(name);
+	public Response saveOrUpdateIngredient(@FormParam("name") String name, @FormParam("price") String price,
+			@FormParam("quantity") String quantity, @FormParam("brand") String brand ) {
+		
+		ingredientService.save(name, Double.parseDouble(price), Double.parseDouble(quantity), brand);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	

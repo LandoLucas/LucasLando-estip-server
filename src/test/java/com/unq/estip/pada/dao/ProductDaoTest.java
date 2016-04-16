@@ -35,13 +35,4 @@ public class ProductDaoTest extends AbstractTransactionalJUnit4SpringContextTest
 		assertSame(prod , prodFromDB);
 	}
 	
-	@Test
-	public void test2(){
-		Ingredient i = new Ingredient("cake");
-		
-		ingDao.save(i);
-		Ingredient ingFromDB = ingDao.findById(i.getId());
-		
-		assertSame(i , ingFromDB);
-	}
 }
