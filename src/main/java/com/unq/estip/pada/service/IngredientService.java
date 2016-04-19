@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unq.estip.pada.model.Ingredient;
+import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.persistence.IngredientDAO;
 
 public class IngredientService {
@@ -20,8 +21,8 @@ public class IngredientService {
 	}
 	
 	@Transactional
-	public void save(String name, Double price, Double quantity, String brand){
-		Ingredient i = new Ingredient(name, price, quantity, brand);
+	public void save(String name, Double price, Double quantity, String brand, Unit unit){
+		Ingredient i = new Ingredient(name, price, quantity, brand, unit);
 		this.ingredientDAO.save(i);
 	}
 	

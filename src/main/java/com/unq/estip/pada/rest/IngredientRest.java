@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.stereotype.Service;
 
 import com.unq.estip.pada.model.Ingredient;
+import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.service.IngredientService;
 
 @Service
@@ -34,9 +35,9 @@ public class IngredientRest {
 	@Path("/save")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response saveOrUpdateIngredient(@FormParam("name") String name, @FormParam("price") String price,
-			@FormParam("quantity") String quantity, @FormParam("brand") String brand ) {
+			@FormParam("quantity") String quantity, @FormParam("brand") String brand, @FormParam("unit") String unit ) {
 		
-		ingredientService.save(name, Double.parseDouble(price), Double.parseDouble(quantity), brand);
+		ingredientService.save(name, Double.parseDouble(price), Double.parseDouble(quantity), brand, Unit.valueOf(unit));
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
@@ -59,6 +60,15 @@ public class IngredientRest {
     	List<Ingredient> ingredients = this.ingredientService.findAll();
     	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(ingredients).build();
     }
+
+	@GET
+    @Path("/units")
+    @Produces("application/json")
+    public Response getAllUnits() {
+		Unit[] values = Unit.class.getEnumConstants();
+    	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(values).build();
+    }
+	
 	
 	
 }

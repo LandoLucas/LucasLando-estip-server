@@ -2,6 +2,8 @@ package com.unq.estip.pada.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -25,6 +27,9 @@ public class Ingredient {
 	
 	@Column
 	private Double quantity;
+	
+	@Column
+	private Unit unit;
 	
 	@Column
 	private String brand;
@@ -73,13 +78,25 @@ public class Ingredient {
 		this.quantity = quantity;
 	}
 
-	public Ingredient(String name, Double price, Double quantity, String brand) {
+	public Ingredient(String name, Double price, Double quantity, String brand, Unit unit) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
+		this.unit = unit;
 		this.brand = brand;
 	}
 
+	@Enumerated(EnumType.STRING)
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+
+	
+	
 	
 }
