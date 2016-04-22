@@ -33,5 +33,10 @@ public class IngredientService {
 	public Ingredient findById(int id) {
 		return this.ingredientDAO.findById(id);
 	}
+
+	@Transactional
+	public void removeIngredientByName(String name) {
+		this.ingredientDAO.removeByName(name);
+	}
 	
 }

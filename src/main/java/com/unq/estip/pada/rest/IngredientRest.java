@@ -41,6 +41,15 @@ public class IngredientRest {
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
+	@POST
+	@Path("/remove")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response removeIngredient(@FormParam("name") String name) {
+		ingredientService.removeIngredientByName(name);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	
 	@GET
     @Path("/ingredient/{id}")
     @Produces("application/json")

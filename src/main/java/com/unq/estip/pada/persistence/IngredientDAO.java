@@ -11,4 +11,8 @@ public class IngredientDAO extends HibernateGenericDAO<Ingredient> implements Ge
 		return Ingredient.class;
 	}
 
+	public void removeByName(String name) {
+		this.getHibernateTemplate().bulkUpdate("delete from "+getDomainClass().getName()+" where name="+"'"+name+"'");
+	}
+
 }
