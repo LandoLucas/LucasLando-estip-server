@@ -2,10 +2,10 @@ package com.unq.estip.pada.service;
 
 import java.util.List;
 
-import org.joda.money.Money;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unq.estip.pada.model.Product;
+import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.persistence.ProductDAO;
 
 /**
@@ -24,25 +24,18 @@ public class ProductService {
 		this.productDAO = productDAO;
 	}
 
-	public void save(Product product) {
-		this.productDAO.save(product);
-	}
-
-	public Product findById(Integer id) {
-		return this.productDAO.findById(id);
-	}
-
 	@Transactional
-	public void save(String name, String price) {
-		Money money = Money.parse("ARS " + price);
-		Product product = new Product();
-		product.setName(name);
-		product.setPrice(money);
-		this.save(product);
+	public void save(String name, Double price, Double quantity, Unit unit) {
+		Product product = new Product(name, price, quantity, unit);
+		this.productDAO.save(product);
 	}
 
 	public List<Product> findAll() {
 		return this.productDAO.findAll();
+	}
+
+	public void removeProduct(String name, Double quantity) {
+		this.productDAO.removeProductByNameAndQuantity(name,quantity);
 	}
 	
 }

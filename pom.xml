@@ -13,12 +13,6 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>org.joda</groupId>
-			<artifactId>joda-money</artifactId>
-			<version>0.11</version>
-		</dependency>
-
-		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>1.4</version>

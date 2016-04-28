@@ -7,14 +7,13 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
 
-import com.unq.estip.pada.model.Ingredient;
 import com.unq.estip.pada.model.Product;
+import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.service.ProductService;
 
 /**
@@ -30,32 +29,22 @@ public class ProductRest {
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
 	}
-	
-	
 
 	public ProductService getProductService() {
 		return productService;
 	}
 
 
-
-	@GET
-    @Path("/product/{id}")
-    @Produces("application/json")
-    public Response getProduct(@PathParam("id") String id) {
-    	Product p = productService.findById(Integer.parseInt(id));
-
-    	if(p == null) return Response.status(Response.Status.NOT_FOUND).build();
-    	
-    	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(p).build();
-    }
-
-
 	@POST
 	@Path("/save")
 	@Consumes("application/x-www-form-urlencoded")
-	public Response saveOrUpdateProduct(@FormParam("name") String name, @FormParam("price") String price) {
-		productService.save(name , price);
+	public Response saveOrUpdateProduct(@FormParam("name") String name, @FormParam("price") String price,
+			@FormParam("quantity") String quantity, @FormParam("unit") String unit) {
+		
+		Double quantityDouble = ConversionUtilities.parseDouble(quantity);
+		Unit unitEnum = Unit.getEnum(unit);
+		
+		productService.save(name , Double.parseDouble(price), quantityDouble, unitEnum);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
@@ -63,11 +52,17 @@ public class ProductRest {
     @Path("/all")
     @Produces("application/json")
     public Response getAllProducts() {
-		System.out.println("delete me");
     	List<Product> ps = this.productService.findAll();
     	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(ps).build();
     }
 	
+	@POST
+	@Path("/remove")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response removeProduct(@FormParam("name") String name, @FormParam("quantity") String quantity) {
+		productService.removeProduct(name,Double.parseDouble(quantity));
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
 
 
 }

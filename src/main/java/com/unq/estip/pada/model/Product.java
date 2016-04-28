@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
-import org.joda.money.Money;
 
 /**
  * Representation of a product
@@ -23,11 +22,17 @@ public class Product {
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(unique=true)
+	@Column
 	private String name;
 	
 	@Column
-	private Money price;
+	private Double price;
+	
+	@Column
+	private Double quantity;
+
+	@Column
+	private Unit unit;
 	
 	public String getName() {
 		return name;
@@ -37,14 +42,6 @@ public class Product {
 		this.name = name;
 	}
 	
-	public Money getPrice() {
-		return price;
-	}
-	
-	public void setPrice(Money price) {
-		this.price = price;
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -52,18 +49,36 @@ public class Product {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 	public Product() {
 		super();
 	}
+	
+	public Double getQuantity() {
+		return quantity;
+	}
 
-	public Product(String name, Money price) {
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
+	}
+
+	
+	
+	public Product(String name, Double price, Double quantity, Unit unit) {
 		super();
 		this.name = name;
 		this.price = price;
+		this.quantity = quantity;
+		this.unit = unit;
 	}
-	
-	
 	
 	
 }
