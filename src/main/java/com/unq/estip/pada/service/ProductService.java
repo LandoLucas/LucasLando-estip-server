@@ -12,6 +12,7 @@ import com.unq.estip.pada.persistence.ProductDAO;
  * Service class for Product management
  * @author Lucas
  */
+@Transactional
 public class ProductService {
 
 	private ProductDAO productDAO;
@@ -24,7 +25,6 @@ public class ProductService {
 		this.productDAO = productDAO;
 	}
 
-	@Transactional
 	public void save(String name, Double price, Double quantity, Unit unit) {
 		Product product = new Product(name, price, quantity, unit);
 		this.productDAO.save(product);
@@ -34,6 +34,7 @@ public class ProductService {
 		return this.productDAO.findAll();
 	}
 
+	
 	public void removeProduct(String name, Double quantity) {
 		this.productDAO.removeProductByNameAndQuantity(name,quantity);
 	}

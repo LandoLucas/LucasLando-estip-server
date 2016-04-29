@@ -60,7 +60,7 @@ public class ProductRest {
 	@Path("/remove")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response removeProduct(@FormParam("name") String name, @FormParam("quantity") String quantity) {
-		productService.removeProduct(name,Double.parseDouble(quantity));
+		productService.removeProduct(name, ConversionUtilities.parseDouble(quantity));
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
