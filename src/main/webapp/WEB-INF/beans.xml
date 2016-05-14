@@ -27,6 +27,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<jaxrs:serviceBeans>
 		    <ref bean="productRest" />
 		    <ref bean="ingredientRest" />
+		    <ref bean="clientRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />
