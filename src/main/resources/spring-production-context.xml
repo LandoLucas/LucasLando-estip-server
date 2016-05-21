@@ -11,13 +11,10 @@
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
 
-	    <!-- 	 DATABASE INITIALIZER -->
-<!--     <bean id="databaseInitializer" class="ar.edu.unq.desapp.grupoD.persistence.DatabaseInitializer"> -->
-<!--         <property name="accountService" ref="accountService" /> -->
-<!-- 		<property name="categoryService" ref="categoryService" /> -->
-<!-- 		<property name="operationService" ref="operationService" /> -->
-<!-- 		<property name="receiptTypeAService" ref="receiptTypeAService" /> -->
-<!-- 		<property name="receiptTypeBService" ref="receiptTypeBService" /> -->
-<!-- 		<property name="providerService" ref="providerService" /> -->
-<!--     </bean> -->
+    <bean id="databaseInitializer" class="com.unq.estip.pada.persistence.DatabaseInitializer">
+        <property name="ingredientService" ref="ingredientService" />
+        <property name="productService" ref="productService" />
+        <property name="clientService" ref="clientService" />
+        <property name="saleService" ref="saleService" />
+    </bean>
 </beans>

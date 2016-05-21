@@ -38,5 +38,9 @@ public class ProductService {
 	public void removeProduct(String name, Double quantity) {
 		this.productDAO.removeProductByNameAndQuantity(name,quantity);
 	}
+
+	public Product findById(int i) {
+		return this.productDAO.findById(i);
+	}
 	
 }

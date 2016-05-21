@@ -71,7 +71,14 @@ public class Product {
 	}
 
 	
-	
+	public Unit getUnit() {
+		return unit;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+
 	public Product(String name, Double price, Double quantity, Unit unit) {
 		super();
 		this.name = name;
