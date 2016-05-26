@@ -23,7 +23,7 @@ public class SaleProduct {
 	private Product product;
 	
 	@Column
-	private Double quantity;
+	private int quantity;
 
 	public Integer getId() {
 		return id;
@@ -41,15 +41,15 @@ public class SaleProduct {
 		this.product = product;
 	}
 
-	public Double getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Double quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public SaleProduct(Product product, Double quantity) {
+	public SaleProduct(Product product, int quantity) {
 		super();
 		this.product = product;
 		this.quantity = quantity;

@@ -116,6 +116,14 @@
 		<property name="clientService" ref="clientService" />
 	</bean>
 	
+	<!-- SALE PRODUCT-->
+	<bean id="saleProductDAO" class="com.unq.estip.pada.persistence.SaleProductDAO">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="saleProductService" class="com.unq.estip.pada.service.SaleProductService">
+		<property name="saleProductDAO" ref="saleProductDAO" />
+	</bean>
+	
 	<!-- SALE -->
 	<bean id="saleDAO" class="com.unq.estip.pada.persistence.SaleDAO">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />
@@ -124,17 +132,10 @@
 		<property name="saleDAO" ref="saleDAO" />
 		<property name="clientDAO" ref="clientDAO" />
 		<property name="productDAO" ref="productDao" />
+		<property name="saleProductDAO" ref="saleProductDAO" />
 	</bean>
 	<bean id="saleRest" class="com.unq.estip.pada.rest.SaleRest">
 		<property name="saleService" ref="saleService" />
-	</bean>
-	
-	<!-- SALE PRODUCT-->
-	<bean id="saleProductDAO" class="com.unq.estip.pada.persistence.SaleProductDAO">
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="saleProductService" class="com.unq.estip.pada.service.SaleProductService">
-		<property name="saleProductDAO" ref="saleProductDAO" />
 	</bean>
 
 </beans>

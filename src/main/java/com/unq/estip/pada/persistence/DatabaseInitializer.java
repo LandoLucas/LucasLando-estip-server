@@ -5,8 +5,6 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.joda.time.DateTime;
-
 import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.service.ClientService;
 import com.unq.estip.pada.service.IngredientService;
@@ -74,26 +72,26 @@ public class DatabaseInitializer {
 		Map<Integer, Double> products = new HashMap<Integer, Double>();
 		products.put( 1 , 1d );
 		
-		this.saleService.save(null, 1, products, 25d, new DateTime().plusMonths(1));
+//		this.saleService.save(null, 1, products, 25d, new DateTime().plusMonths(1));
 		
 		products = new HashMap<Integer, Double>();
 		products.put( 1 , 2d );
 		products.put( 2 , 1d );
 		
-		this.saleService.save(null, 2, products, 205d, new DateTime().plusMonths(2));
+//		this.saleService.save(null, 2, products, 205d, new DateTime().plusMonths(2));
 		
 		products = new HashMap<Integer, Double>();
 		products.put( 1 , 3d );
 		products.put( 2 , 2d );
 		products.put( 3 , 1d );
-		this.saleService.save(null, 3, products, 385d, new DateTime().plusDays(5));
+//		this.saleService.save(null, 3, products, 385d, new DateTime().plusDays(5));
 		
 		products = new HashMap<Integer, Double>();
 		products.put( 1 , 4d );
 		products.put( 2 , 3d );
 		products.put( 3 , 2d );
 		products.put( 4 , 1d );
-		this.saleService.save(null, 4, products, 500d, new DateTime().plusMinutes(50));
+//		this.saleService.save(null, 4, products, 500d, new DateTime().plusMinutes(50));
 		
 		System.out.println("Database populated");
 	}

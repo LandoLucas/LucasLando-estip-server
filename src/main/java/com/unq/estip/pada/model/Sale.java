@@ -26,10 +26,10 @@ public class Sale {
 	@GeneratedValue
 	private Integer id;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	private Client client;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<SaleProduct> products;
 	
@@ -90,9 +90,8 @@ public class Sale {
 		this.date = date;
 	}
 
-	public Sale(Integer id, Client client, List<SaleProduct> products, Double price, DateTime date, SaleState state) {
+	public Sale(Client client, List<SaleProduct> products, Double price, DateTime date, SaleState state) {
 		super();
-		this.id = id;
 		this.client = client;
 		this.products = products;
 		this.price = price;
