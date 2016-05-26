@@ -39,6 +39,14 @@ public class SaleRest {
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
+	@POST
+	@Path("/update")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateSale(SaleDTO sale) {
+		saleService.save(sale);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
 	@GET
     @Path("/all")
     @Produces("application/json")

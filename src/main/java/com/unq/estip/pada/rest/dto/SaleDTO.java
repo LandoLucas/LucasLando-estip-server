@@ -4,11 +4,21 @@ import java.util.List;
 
 public class SaleDTO {
 
+	private Integer id;
 	private int clientID;
 	private List<ProductsDTO> products;
 	private Double price;
 	private String date;
 	private String time;
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public int getClientID() {
 		return clientID;
@@ -48,6 +58,16 @@ public class SaleDTO {
 
 	public void setProducts(List<ProductsDTO> products) {
 		this.products = products;
+	}
+
+	public SaleDTO(Integer id, int clientID, List<ProductsDTO> products, Double price, String date, String time) {
+		super();
+		this.id = id;
+		this.clientID = clientID;
+		this.products = products;
+		this.price = price;
+		this.date = date;
+		this.time = time;
 	}
 
 	public SaleDTO(int clientID, List<ProductsDTO> products, Double price, String date, String time) {

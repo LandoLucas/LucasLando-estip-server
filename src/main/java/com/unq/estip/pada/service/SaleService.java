@@ -76,7 +76,17 @@ public class SaleService {
 		date = date.withHourOfDay(time.getHourOfDay());
 		date = date.withMinuteOfHour(time.getMinuteOfHour());
 		
-		Sale sale = new Sale(client, saleProducts, saleDTO.getPrice(), date, SaleState.Pedido);
+		Sale sale;
+		if(saleDTO.getId() == null){
+			sale = new Sale(client, saleProducts, saleDTO.getPrice(), date, SaleState.Pedido);
+		}else{
+			sale = saleDAO.findById(saleDTO.getId());
+			sale.setClient(client);
+			sale.setProducts(saleProducts);
+			sale.setPrice(saleDTO.getPrice());
+			sale.setDate(date);
+		}
+		
 		this.saleProductDAO.save(saleProducts);
 		this.saleDAO.save(sale);
 	}
@@ -84,5 +94,6 @@ public class SaleService {
 	public void removeSale(Integer id) {
 		this.saleDAO.deleteById(id);
 	}
+
 	
 }
