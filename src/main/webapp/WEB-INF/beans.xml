@@ -30,6 +30,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		    <ref bean="ingredientRest" />
 		    <ref bean="clientRest" />
 		    <ref bean="saleRest" />
+		    <ref bean="storeRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:extensionMappings>
 			<entry key="json" value="application/json" />

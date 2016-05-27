@@ -10,6 +10,7 @@ import com.unq.estip.pada.service.ClientService;
 import com.unq.estip.pada.service.IngredientService;
 import com.unq.estip.pada.service.ProductService;
 import com.unq.estip.pada.service.SaleService;
+import com.unq.estip.pada.service.StoreService;
 
 public class DatabaseInitializer {
 
@@ -17,7 +18,16 @@ public class DatabaseInitializer {
 	private ProductService productService;
 	private ClientService clientService;
 	private SaleService saleService;
+	private StoreService storeService;
 	
+	public StoreService getStoreService() {
+		return storeService;
+	}
+
+	public void setStoreService(StoreService storeService) {
+		this.storeService = storeService;
+	}
+
 	public SaleService getSaleService() {
 		return saleService;
 	}
@@ -53,6 +63,11 @@ public class DatabaseInitializer {
 	@PostConstruct
 	public void populateDatabase(){
 		System.out.println("Populating database");
+		
+		this.storeService.save(null, "Mercado Juan", "Calle falsa 123", "555-5555", "15-5265-5625");
+		this.storeService.save(null, "Tienda Pepe", "", "", "");
+		this.storeService.save(null, "Supermercado Coto", "Av 9 de Julio 111", "444-4444", "");
+		this.storeService.save(null, "Supermercado Dia %", "", "", "15-1111-1111");
 		
 		this.ingredientService.save("Harina", 20d, 1d, "Blancaflor", Unit.kg);
 		this.ingredientService.save("Azucar impalpable", 14.29d, 1d, "", Unit.kg);

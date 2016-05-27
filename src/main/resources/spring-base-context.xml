@@ -138,5 +138,16 @@
 	<bean id="saleRest" class="com.unq.estip.pada.rest.SaleRest">
 		<property name="saleService" ref="saleService" />
 	</bean>
+	
+	<!-- STORES -->
+	<bean id="storeDAO" class="com.unq.estip.pada.persistence.StoreDAO">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="storeService" class="com.unq.estip.pada.service.StoreService">
+		<property name="storeDAO" ref="storeDAO" />
+	</bean>
+	<bean id="storeRest" class="com.unq.estip.pada.rest.StoresRest">
+		<property name="storeService" ref="storeService" />
+	</bean>
 
 </beans>

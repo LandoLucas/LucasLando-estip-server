@@ -103,7 +103,6 @@ public class Client {
 		setVars(firstName, lastName, telephone, cellphone, address);
 	}
 	
-	public Client(){};
-	
-	
+	public Client(){}
+
 }

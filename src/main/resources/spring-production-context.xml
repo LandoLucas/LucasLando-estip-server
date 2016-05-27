@@ -22,5 +22,6 @@
         <property name="productService" ref="productService" />
         <property name="clientService" ref="clientService" />
         <property name="saleService" ref="saleService" />
+        <property name="storeService" ref="storeService" />
     </bean>
 </beans>
