@@ -95,5 +95,11 @@ public class SaleService {
 		this.saleDAO.deleteById(id);
 	}
 
+	public void changeState(Integer id, SaleState state) {
+		Sale s = this.saleDAO.findById(id);
+		s.setState(state);
+		this.saleDAO.update( s );
+	}
+
 	
 }

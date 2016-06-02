@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.stereotype.Service;
 
 import com.unq.estip.pada.model.Sale;
+import com.unq.estip.pada.model.SaleState;
 import com.unq.estip.pada.rest.dto.SaleDTO;
 import com.unq.estip.pada.service.SaleService;
 
@@ -62,5 +63,38 @@ public class SaleRest {
 		saleService.removeSale(Integer.valueOf(id));
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
+	
+	@POST
+	@Path("/inPreparation")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response inPreparation(@FormParam("id") String id) {
+		saleService.changeState(Integer.valueOf(id) , SaleState.Preparando);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	@POST
+	@Path("/prepared")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response prepared(@FormParam("id") String id) {
+		saleService.changeState(Integer.valueOf(id) , SaleState.Listo);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	@POST
+	@Path("/delivered")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response delivered(@FormParam("id") String id) {
+		saleService.changeState(Integer.valueOf(id) , SaleState.Entregado);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	@POST
+	@Path("/requested")
+	@Consumes("application/x-www-form-urlencoded")
+	public Response requested(@FormParam("id") String id) {
+		saleService.changeState(Integer.valueOf(id) , SaleState.Pedido);
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+	
 	
 }
