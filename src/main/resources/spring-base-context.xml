@@ -150,4 +150,16 @@
 		<property name="storeService" ref="storeService" />
 	</bean>
 
+	<!-- PURCHASE -->
+	<bean id="purchaseDAO" class="com.unq.estip.pada.persistence.PurchaseDAO">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
+	</bean>
+	<bean id="purchaseService" class="com.unq.estip.pada.service.PurchaseService">
+		<property name="purchaseDAO" ref="purchaseDAO" />
+		<property name="storeDAO" ref="storeDAO" />
+	</bean>
+	<bean id="purchaseRest" class="com.unq.estip.pada.rest.PurchaseRest">
+		<property name="purchaseService" ref="purchaseService" />
+	</bean>
+
 </beans>
