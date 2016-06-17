@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.unq.estip.pada.model.Product;
 import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.service.ProductService;
+import com.unq.estip.pada.utils.Utilities;
 
 /**
  * REST service for Products
@@ -41,7 +42,7 @@ public class ProductRest {
 	public Response saveOrUpdateProduct(@FormParam("name") String name, @FormParam("price") String price,
 			@FormParam("quantity") String quantity, @FormParam("unit") String unit) {
 		
-		Double quantityDouble = ConversionUtilities.parseDouble(quantity);
+		Double quantityDouble = Utilities.parseDouble(quantity);
 		Unit unitEnum = Unit.getEnum(unit);
 		
 		productService.save(name , Double.parseDouble(price), quantityDouble, unitEnum);
@@ -60,7 +61,7 @@ public class ProductRest {
 	@Path("/remove")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response removeProduct(@FormParam("name") String name, @FormParam("quantity") String quantity) {
-		productService.removeProduct(name, ConversionUtilities.parseDouble(quantity));
+		productService.removeProduct(name, Utilities.parseDouble(quantity));
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 

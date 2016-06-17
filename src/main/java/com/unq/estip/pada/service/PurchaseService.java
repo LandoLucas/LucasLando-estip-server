@@ -9,6 +9,7 @@ import com.unq.estip.pada.model.Purchase;
 import com.unq.estip.pada.persistence.PurchaseDAO;
 import com.unq.estip.pada.persistence.StoreDAO;
 import com.unq.estip.pada.rest.dto.PurchaseDTO;
+import com.unq.estip.pada.utils.Utilities;
 
 @Transactional
 public class PurchaseService {
@@ -37,7 +38,7 @@ public class PurchaseService {
 	}
 
 	public void savePurchase(PurchaseDTO purchase) {
-		Purchase p = (purchase.getId() != null) ? purchaseDAO.findById(purchase.getId()) : new Purchase();
+		Purchase p = Utilities.isVariableSet(purchase.getId()) ? purchaseDAO.findById(purchase.getId()) : new Purchase();
 		p.setStore(storeDAO.findById(purchase.getStore()));
 		p.setPrice(purchase.getPrice());
 		p.setDate(new DateTime(purchase.getDate()));

@@ -1,6 +1,6 @@
-package com.unq.estip.pada.rest;
+package com.unq.estip.pada.utils;
 
-public class ConversionUtilities {
+public class Utilities {
 
 	/**
 	 * Intenta convertir un String a Double, devuelve null en caso de numberFormatException
@@ -10,4 +10,7 @@ public class ConversionUtilities {
 		catch(NumberFormatException e){ return null; }
 	}
 
+	public static boolean isVariableSet(Object o){
+		return o != null && !o.equals("") && !o.equals(0); 
+	}
 }

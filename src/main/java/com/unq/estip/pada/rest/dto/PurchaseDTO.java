@@ -1,7 +1,7 @@
 package com.unq.estip.pada.rest.dto;
 
-public class PurchaseDTO {
 
+public class PurchaseDTO {
 	private Integer id;
 	private int store;
 	private String date;
@@ -39,16 +39,17 @@ public class PurchaseDTO {
 		this.price = price;
 	}
 
-	public PurchaseDTO(Integer id, int store, String date, Double price) {
-		super();
-		this.id = id;
-		this.store = store;
-		this.date = date;
-		this.price = price;
-	}
+//	public PurchaseDTO(Integer id, int store, String date, Double price) {
+//		super();
+//		this.id = id;
+//		this.store = store;
+//		this.date = date;
+//		this.price = price;
+//	}
 
 	public PurchaseDTO() {
 		super();
 	}
+	
 
 }
