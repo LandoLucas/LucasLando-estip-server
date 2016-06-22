@@ -39,13 +39,13 @@ public class ProductRest {
 	@POST
 	@Path("/save")
 	@Consumes("application/x-www-form-urlencoded")
-	public Response saveOrUpdateProduct(@FormParam("name") String name, @FormParam("price") String price,
+	public Response saveOrUpdateProduct(@FormParam("id") String id, @FormParam("name") String name, @FormParam("price") String price,
 			@FormParam("quantity") String quantity, @FormParam("unit") String unit) {
 		
 		Double quantityDouble = Utilities.parseDouble(quantity);
 		Unit unitEnum = Unit.getEnum(unit);
 		
-		productService.save(name , Double.parseDouble(price), quantityDouble, unitEnum);
+		productService.save(Integer.parseInt(id), name , Double.parseDouble(price), quantityDouble, unitEnum);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	

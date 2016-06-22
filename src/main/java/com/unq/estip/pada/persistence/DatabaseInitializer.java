@@ -78,10 +78,10 @@ public class DatabaseInitializer {
 		this.ingredientService.save("Esencia de vainilla", 24.99d, 1d, "", Unit.lt);
 		this.ingredientService.save("Manteca", 12.99d, 200d, "Sancor", Unit.gr);		
 		
-		this.productService.save("Brownies", 25d, 1d, Unit.unidad);
-		this.productService.save("Lemon Pie mediana", 180d, 1d, Unit.unidad);
-		this.productService.save("Cheesecake", 180d, 1d, Unit.unidad);
-		this.productService.save("Empanadas arabes", 120d, 12d, Unit.unidad);
+		this.productService.save(null, "Brownies", 25d, 1d, Unit.unidad);
+		this.productService.save(null, "Lemon Pie mediana", 180d, 1d, Unit.unidad);
+		this.productService.save(null, "Cheesecake", 180d, 1d, Unit.unidad);
+		this.productService.save(null, "Empanadas arabes", 120d, 12d, Unit.unidad);
 		
 		this.clientService.save(null, "Lalo", "Landa", "4111-1212", "15-6565-4545", "direccion 1");
 		this.clientService.save(null, "Frank", "Grimes", "", "5411-1111-2222", "");

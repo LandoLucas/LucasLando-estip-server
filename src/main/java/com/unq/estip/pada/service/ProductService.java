@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unq.estip.pada.model.Product;
+import com.unq.estip.pada.model.Purchase;
 import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.persistence.ProductDAO;
+import com.unq.estip.pada.utils.Utilities;
 
 /**
  * Service class for Product management
@@ -25,9 +27,14 @@ public class ProductService {
 		this.productDAO = productDAO;
 	}
 
-	public void save(String name, Double price, Double quantity, Unit unit) {
-		Product product = new Product(name, price, quantity, unit);
-		this.productDAO.save(product);
+	public void save(Integer id, String name, Double price, Double quantity, Unit unit) {
+		Product p = Utilities.isVariableSet(id) ? productDAO.findById(id) : new Product();
+		p.setName(name);
+		p.setPrice(price);
+		p.setQuantity(quantity);
+		p.setUnit(unit);
+
+		this.productDAO.save(p);
 	}
 
 	public List<Product> findAll() {
