@@ -14,14 +14,13 @@
 
 	<import resource="classpath:spring-base-context.xml" />
 
-	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
-    <bean id="databaseInitializer" class="com.unq.estip.pada.persistence.DatabaseInitializer">
-        <property name="ingredientService" ref="ingredientService" />
-        <property name="productService" ref="productService" />
-        <property name="clientService" ref="clientService" />
-        <property name="saleService" ref="saleService" />
-        <property name="storeService" ref="storeService" />
-    </bean>
+<!--     <bean id="databaseInitializer" class="com.unq.estip.pada.persistence.DatabaseInitializer"> -->
+<!--         <property name="ingredientService" ref="ingredientService" /> -->
+<!--         <property name="productService" ref="productService" /> -->
+<!--         <property name="clientService" ref="clientService" /> -->
+<!--         <property name="saleService" ref="saleService" /> -->
+<!--         <property name="storeService" ref="storeService" /> -->
+<!--     </bean> -->
 </beans>

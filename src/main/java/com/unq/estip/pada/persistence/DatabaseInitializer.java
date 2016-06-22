@@ -1,11 +1,15 @@
 package com.unq.estip.pada.persistence;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.joda.time.DateTime;
+
 import com.unq.estip.pada.model.Unit;
+import com.unq.estip.pada.rest.dto.ProductsDTO;
+import com.unq.estip.pada.rest.dto.SaleDTO;
 import com.unq.estip.pada.service.ClientService;
 import com.unq.estip.pada.service.IngredientService;
 import com.unq.estip.pada.service.ProductService;
@@ -84,29 +88,9 @@ public class DatabaseInitializer {
 		this.clientService.save(null, "Otto", "", "4222-1212", "", "");
 		this.clientService.save(null, "Lionel", "Hutz", "", "", "direccion 4 piso 3");
 		
-		Map<Integer, Double> products = new HashMap<Integer, Double>();
-		products.put( 1 , 1d );
-		
-//		this.saleService.save(null, 1, products, 25d, new DateTime().plusMonths(1));
-		
-		products = new HashMap<Integer, Double>();
-		products.put( 1 , 2d );
-		products.put( 2 , 1d );
-		
-//		this.saleService.save(null, 2, products, 205d, new DateTime().plusMonths(2));
-		
-		products = new HashMap<Integer, Double>();
-		products.put( 1 , 3d );
-		products.put( 2 , 2d );
-		products.put( 3 , 1d );
-//		this.saleService.save(null, 3, products, 385d, new DateTime().plusDays(5));
-		
-		products = new HashMap<Integer, Double>();
-		products.put( 1 , 4d );
-		products.put( 2 , 3d );
-		products.put( 3 , 2d );
-		products.put( 4 , 1d );
-//		this.saleService.save(null, 4, products, 500d, new DateTime().plusMinutes(50));
+//		List<ProductsDTO> products = new ArrayList<ProductsDTO>();
+//		SaleDTO sale = new SaleDTO(1, products, 180d, new DateTime().toString(), new DateTime().toString());
+//		this.saleService.save(saleDTO);
 		
 		System.out.println("Database populated");
 	}

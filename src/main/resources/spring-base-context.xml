@@ -17,28 +17,24 @@
 	<!-- Configurer that replaces ${...} placeholders with values from properties 
 		files -->
 	<!-- (in this case, mail and JDBC related properties) -->
+	
 	<bean id="persistence.propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath*:META-INF/hibernate.properties</value>
-				<value>classpath*:META-INF/jdbc.properties</value>
-				<!-- <value>classpath*:META-INF/jdbc.MYSQL.properties</value> -->
-			</list>
+		<property name="location">
+				<value>classpath:jdbc.properties</value>
 		</property>
 	</bean>
 
 	<bean id="persistence.dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:mem:unqdb" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 		<property name="defaultAutoCommit" value="false" />
 		<property name="poolPreparedStatements" value="true" />
 		<property name="initialSize" value="20" />
 		<property name="maxActive" value="30" />
 		<property name="maxIdle" value="25" />
-
 	</bean>
 
 	<!-- Defines a global session factory that will be used by all modules. -->
@@ -46,21 +42,17 @@
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 
 		<property name="dataSource" ref="persistence.dataSource" />
-
 		<property name="packagesToScan" value="com.unq.estip.pada.model" />
-
 		<property name="hibernateProperties">
 			<props>
 				<!-- Configuration generic properties. They are loaded from file hibernate.properties -->
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
-
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
 				<prop key="hibernate.connection.autocommit">false</prop>
-				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory
-
-				</prop>
+<!-- 				<prop key="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory -->
+<!-- 				</prop> -->
 			</props>
 		</property>
 
