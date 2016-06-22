@@ -27,8 +27,8 @@ public class ProductService {
 		this.productDAO = productDAO;
 	}
 
-	public void save(Integer id, String name, Double price, Double quantity, Unit unit) {
-		Product p = Utilities.isVariableSet(id) ? productDAO.findById(id) : new Product();
+	public void save(String id, String name, Double price, Double quantity, Unit unit) {
+		Product p = Utilities.isVariableSet(id) ? productDAO.findById(Integer.parseInt(id)) : new Product();
 		p.setName(name);
 		p.setPrice(price);
 		p.setQuantity(quantity);

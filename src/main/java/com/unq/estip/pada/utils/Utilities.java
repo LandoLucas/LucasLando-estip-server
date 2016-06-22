@@ -11,6 +11,6 @@ public class Utilities {
 	}
 
 	public static boolean isVariableSet(Object o){
-		return o != null && !o.equals("") && !o.equals(0); 
+		return o != null && !o.equals("") && !o.equals("null") && !o.equals(0); 
 	}
 }

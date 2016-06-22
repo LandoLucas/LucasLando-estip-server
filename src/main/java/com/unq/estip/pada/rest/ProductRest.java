@@ -45,7 +45,7 @@ public class ProductRest {
 		Double quantityDouble = Utilities.parseDouble(quantity);
 		Unit unitEnum = Unit.getEnum(unit);
 		
-		productService.save(Integer.parseInt(id), name , Double.parseDouble(price), quantityDouble, unitEnum);
+		productService.save(id, name , Double.parseDouble(price), quantityDouble, unitEnum);
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
