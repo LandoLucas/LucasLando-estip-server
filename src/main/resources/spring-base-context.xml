@@ -87,17 +87,6 @@
 		<property name="productService" ref="productService" />
 	</bean>
 	
-	<!-- INGREDIENT -->
-	<bean id="ingredientDao" class="com.unq.estip.pada.persistence.IngredientDAO">
-		<property name="sessionFactory" ref="persistence.sessionFactory" />
-	</bean>
-	<bean id="ingredientService" class="com.unq.estip.pada.service.IngredientService">
-		<property name="ingredientDAO" ref="ingredientDao" />
-	</bean>
-	<bean id="ingredientRest" class="com.unq.estip.pada.rest.IngredientRest">
-		<property name="ingredientService" ref="ingredientService" />
-	</bean>
-	
 	<!-- CLIENT -->
 	<bean id="clientDAO" class="com.unq.estip.pada.persistence.ClientDAO">
 		<property name="sessionFactory" ref="persistence.sessionFactory" />

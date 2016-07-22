@@ -65,5 +65,12 @@ public class ProductRest {
 		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
-
+	@GET
+    @Path("/units")
+    @Produces("application/json")
+    public Response getAllUnits() {
+		Unit[] values = Unit.class.getEnumConstants();
+    	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(values).build();
+    }
+	
 }
