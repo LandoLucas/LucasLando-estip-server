@@ -12,17 +12,19 @@ public class ClientService {
 
 	private ClientDAO clientDAO;
 
-	public ClientDAO getClientDAO() {
-		return clientDAO;
-	}
-
 	public void setClientDAO(ClientDAO clientDAO) {
 		this.clientDAO = clientDAO;
 	}
 
 	public void save(String id, String name, String lastName, String telephone, String cellphone, String address) {
 		if(id != null && !id.isEmpty()){
-			this.clientDAO.save(new Client(Integer.parseInt(id), name, lastName, telephone, cellphone, address));
+			Client c = clientDAO.findById(Integer.parseInt(id));
+			c.setFirstName(name);
+			c.setLastName(lastName);
+			c.setTelephone(telephone);
+			c.setCellphone(cellphone);
+			c.setAddress(address);
+			this.clientDAO.save(c);
 		}else{
 			this.clientDAO.save(new Client(name, lastName, telephone, cellphone, address));
 		}
