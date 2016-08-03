@@ -23,10 +23,6 @@ public class PurchaseRest {
 
 	private PurchaseService purchaseService;
 
-	public PurchaseService getPurchaseService() {
-		return purchaseService;
-	}
-
 	public void setPurchaseService(PurchaseService purchaseService) {
 		this.purchaseService = purchaseService;
 	}

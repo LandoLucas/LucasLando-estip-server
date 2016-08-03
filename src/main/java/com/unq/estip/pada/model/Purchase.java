@@ -38,10 +38,6 @@ public class Purchase {
 		this.id = id;
 	}
 
-	public Store getStore() {
-		return store;
-	}
-
 	public void setStore(Store store) {
 		this.store = store;
 	}
@@ -54,20 +50,10 @@ public class Purchase {
 		this.price = price;
 	}
 
-	public DateTime getDate() {
-		return date;
-	}
-
 	public void setDate(DateTime date) {
 		this.date = date;
 	}
 
-	public Purchase(Store store, Double price, DateTime date) {
-		super();
-		this.store = store;
-		this.price = price;
-		this.date = date;
-	}
 
 	public Purchase() {
 		super();

@@ -69,14 +69,6 @@ public class Store {
 		this.address = address;
 	}
 
-	public Store(Integer id, String name, String telephone, String cellphone, String address) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.telephone = telephone;
-		this.cellphone = cellphone;
-		this.address = address;
-	}
 
 	public Store() {}
 

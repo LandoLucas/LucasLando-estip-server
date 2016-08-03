@@ -24,10 +24,6 @@ public class SaleRest {
 
 	private SaleService saleService;
 
-	public SaleService getSaleService() {
-		return saleService;
-	}
-
 	public void setSaleService(SaleService saleService) {
 		this.saleService = saleService;
 	}

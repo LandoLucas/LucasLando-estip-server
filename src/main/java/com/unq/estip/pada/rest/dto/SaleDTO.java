@@ -70,14 +70,14 @@ public class SaleDTO {
 		this.time = time;
 	}
 
-	public SaleDTO(int clientID, List<ProductsDTO> products, Double price, String date, String time) {
-		super();
-		this.clientID = clientID;
-		this.products = products;
-		this.price = price;
-		this.date = date;
-		this.time = time;
-	}
+//	public SaleDTO(int clientID, List<ProductsDTO> products, Double price, String date, String time) {
+//		super();
+//		this.clientID = clientID;
+//		this.products = products;
+//		this.price = price;
+//		this.date = date;
+//		this.time = time;
+//	}
 
 	public SaleDTO(){}
 	

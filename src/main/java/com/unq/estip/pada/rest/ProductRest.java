@@ -31,11 +31,6 @@ public class ProductRest {
 		this.productService = productService;
 	}
 
-	public ProductService getProductService() {
-		return productService;
-	}
-
-
 	@POST
 	@Path("/save")
 	@Consumes("application/x-www-form-urlencoded")

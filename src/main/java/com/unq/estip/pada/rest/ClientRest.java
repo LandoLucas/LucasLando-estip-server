@@ -21,10 +21,6 @@ public class ClientRest {
 
 	private ClientService clientService;
 
-	public ClientService getClientService() {
-		return clientService;
-	}
-
 	public void setClientService(ClientService clientService) {
 		this.clientService = clientService;
 	}

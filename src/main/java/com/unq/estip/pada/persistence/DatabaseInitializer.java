@@ -15,32 +15,16 @@ public class DatabaseInitializer {
 	private SaleService saleService;
 	private StoreService storeService;
 	
-	public StoreService getStoreService() {
-		return storeService;
-	}
-
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
-	}
-
-	public SaleService getSaleService() {
-		return saleService;
 	}
 
 	public void setSaleService(SaleService saleService) {
 		this.saleService = saleService;
 	}
 
-	public ClientService getClientService() {
-		return clientService;
-	}
-
 	public void setClientService(ClientService clientService) {
 		this.clientService = clientService;
-	}
-
-	public ProductService getProductService() {
-		return productService;
 	}
 
 	public void setProductService(ProductService productService) {

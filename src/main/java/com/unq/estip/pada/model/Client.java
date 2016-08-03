@@ -44,32 +44,16 @@ public class Client {
 		this.firstName = firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getTelephone() {
-		return telephone;
 	}
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
-	public String getCellphone() {
-		return cellphone;
-	}
-
 	public void setCellphone(String cellphone) {
 		this.cellphone = cellphone;
-	}
-
-	public String getAddress() {
-		return address;
 	}
 
 	public void setAddress(String address) {
@@ -82,12 +66,6 @@ public class Client {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Client(Integer id, String firstName, String lastName, String telephone, String cellphone, String address) {
-		super();
-		this.id = id;
-		setVars(firstName, lastName, telephone, cellphone, address);
 	}
 
 	private void setVars(String firstName, String lastName, String telephone, String cellphone, String address) {

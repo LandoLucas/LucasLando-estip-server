@@ -79,13 +79,4 @@ public class Product {
 		this.unit = unit;
 	}
 
-	public Product(String name, Double price, Double quantity, Unit unit) {
-		super();
-		this.name = name;
-		this.price = price;
-		this.quantity = quantity;
-		this.unit = unit;
-	}
-	
-	
 }

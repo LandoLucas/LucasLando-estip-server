@@ -50,16 +50,8 @@ public class Sale {
 		this.id = id;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
 	public void setClient(Client client) {
 		this.client = client;
-	}
-
-	public List<SaleProduct> getProducts() {
-		return products;
 	}
 
 	public void setProducts(List<SaleProduct> products) {
@@ -80,10 +72,6 @@ public class Sale {
 
 	public void setPrice(Double price) {
 		this.price = price;
-	}
-
-	public DateTime getDate() {
-		return date;
 	}
 
 	public void setDate(DateTime date) {

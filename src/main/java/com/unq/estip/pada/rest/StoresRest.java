@@ -21,10 +21,6 @@ public class StoresRest {
 
 	private StoreService storeService;
 
-	public StoreService getStoreService() {
-		return storeService;
-	}
-
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;
 	}
