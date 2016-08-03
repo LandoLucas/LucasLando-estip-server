@@ -17,23 +17,15 @@ public class PurchaseService {
 	private PurchaseDAO purchaseDAO;
 	private StoreDAO storeDAO;
 	
-	public StoreDAO getStoreDAO() {
-		return storeDAO;
-	}
-
 	public void setStoreDAO(StoreDAO storeDAO) {
 		this.storeDAO = storeDAO;
-	}
-
-	public PurchaseDAO getPurchaseDAO() {
-		return purchaseDAO;
 	}
 
 	public void setPurchaseDAO(PurchaseDAO purchaseDAO) {
 		this.purchaseDAO = purchaseDAO;
 	}
 	
-	public List<Purchase> getAll(){
+	public List<Purchase> findAll(){
 		return purchaseDAO.findAll();
 	}
 
@@ -46,7 +38,7 @@ public class PurchaseService {
 		purchaseDAO.save(p);
 	}
 
-	public void delete(Integer id) {
+	public void remove(Integer id) {
 		purchaseDAO.deleteById(id);
 	}
 	

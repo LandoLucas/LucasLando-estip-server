@@ -35,7 +35,7 @@ public class PurchaseRest {
     @Path("/all")
     @Produces("application/json")
     public Response getAll() {
-    	List<Purchase> ps = this.purchaseService.getAll();
+    	List<Purchase> ps = this.purchaseService.findAll();
     	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(ps).build();
     }
 	
@@ -44,7 +44,7 @@ public class PurchaseRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(PurchaseDTO purchase) {
 		purchaseService.savePurchase(purchase);
-		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(this.purchaseService.getAll()).build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(this.purchaseService.findAll()).build();
 	}
 
 	
@@ -52,8 +52,8 @@ public class PurchaseRest {
 	@Path("/delete")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response delete(@FormParam("id") String id) {
-		purchaseService.delete(Integer.valueOf(id));
-		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(this.purchaseService.getAll()).build();
+		purchaseService.remove(Integer.valueOf(id));
+		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(this.purchaseService.findAll()).build();
 	}
 	
 }
