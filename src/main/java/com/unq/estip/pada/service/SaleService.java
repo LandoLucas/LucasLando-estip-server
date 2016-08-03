@@ -25,32 +25,16 @@ public class SaleService {
 	private ProductDAO productDAO;
 	private SaleProductDAO saleProductDAO;
 	
-	public SaleProductDAO getSaleProductDAO() {
-		return saleProductDAO;
-	}
-
 	public void setSaleProductDAO(SaleProductDAO saleProductDAO) {
 		this.saleProductDAO = saleProductDAO;
-	}
-
-	public ProductDAO getProductDAO() {
-		return productDAO;
 	}
 
 	public void setProductDAO(ProductDAO productDAO) {
 		this.productDAO = productDAO;
 	}
 
-	public ClientDAO getClientDAO() {
-		return clientDAO;
-	}
-
 	public void setClientDAO(ClientDAO clientDAO) {
 		this.clientDAO = clientDAO;
-	}
-
-	public SaleDAO getSaleDAO() {
-		return saleDAO;
 	}
 
 	public void setSaleDAO(SaleDAO saleDAO) {
