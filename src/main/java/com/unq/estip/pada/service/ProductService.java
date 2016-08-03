@@ -18,10 +18,6 @@ public class ProductService {
 
 	private ProductDAO productDAO;
 
-	public ProductDAO getProductDAO() {
-		return productDAO;
-	}
-
 	public void setProductDAO(ProductDAO productDAO) {
 		this.productDAO = productDAO;
 	}
@@ -45,8 +41,4 @@ public class ProductService {
 		this.productDAO.removeProductByNameAndQuantity(name,quantity);
 	}
 
-	public Product findById(int i) {
-		return this.productDAO.findById(i);
-	}
-	
 }
