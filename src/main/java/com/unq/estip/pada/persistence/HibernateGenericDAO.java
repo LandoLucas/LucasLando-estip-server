@@ -17,17 +17,6 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 	protected Class<T> persistentClass = this.getDomainClass();
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public int count() {
-		List<Long> list = this.getHibernateTemplate()
-				.find("select count(*) from " + this.persistentClass.getName()
-						+ " o");
-		Long count = list.get(0);
-		return count.intValue();
-
-	}
-
-	@Override
 	public void delete(final T entity) {
 		this.getHibernateTemplate().delete(entity);
 	}

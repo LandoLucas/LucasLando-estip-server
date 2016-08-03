@@ -1,15 +1,8 @@
 package com.unq.estip.pada.persistence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 
-import org.joda.time.DateTime;
-
 import com.unq.estip.pada.model.Unit;
-import com.unq.estip.pada.rest.dto.ProductsDTO;
-import com.unq.estip.pada.rest.dto.SaleDTO;
 import com.unq.estip.pada.service.ClientService;
 import com.unq.estip.pada.service.ProductService;
 import com.unq.estip.pada.service.SaleService;

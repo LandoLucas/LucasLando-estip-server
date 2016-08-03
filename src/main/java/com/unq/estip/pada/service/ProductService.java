@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.unq.estip.pada.model.Product;
-import com.unq.estip.pada.model.Purchase;
 import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.persistence.ProductDAO;
 import com.unq.estip.pada.utils.Utilities;

@@ -12,17 +12,18 @@ public class StoreService {
 
 	private StoreDAO storeDAO;
 
-	public StoreDAO getStoreDAO() {
-		return storeDAO;
-	}
-
 	public void setStoreDAO(StoreDAO storeDAO) {
 		this.storeDAO = storeDAO;
 	}
 	
 	public void save(String id, String name, String address, String telephone, String cellphone) {
 		if(id != null && !id.isEmpty()){
-			this.storeDAO.save(new Store(Integer.parseInt(id), name,  telephone, cellphone, address));
+			Store s = storeDAO.findById(Integer.parseInt(id));
+			s.setName(name);
+			s.setTelephone(telephone);
+			s.setCellphone(cellphone);
+			s.setAddress(address);
+			this.storeDAO.save(s);
 		}else{
 			this.storeDAO.save(new Store(name, telephone, cellphone, address));
 		}

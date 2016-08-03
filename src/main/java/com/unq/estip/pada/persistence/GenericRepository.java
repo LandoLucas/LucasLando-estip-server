@@ -22,8 +22,6 @@ public interface GenericRepository<T> {
 
 	void deleteById(Serializable id);
 
-	int count();
-
 	List<T> findByExample(T exampleObject);
 
 }
