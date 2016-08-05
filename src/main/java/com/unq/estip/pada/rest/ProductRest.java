@@ -62,7 +62,7 @@ public class ProductRest {
 			productService.removeProduct(name, Utilities.parseDouble(quantity));	
 			return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 		}catch(DataIntegrityViolationException e){
-			return Response.serverError().header("Access-Control-Allow-Origin", "*").entity(ErrorCodes.RESOURCE_IN_USE).build();
+			return Response.serverError().header("Access-Control-Allow-Origin", "*").entity(ErrorCodes.PRODUCT_IN_USE).build();
 		}
 	}
 

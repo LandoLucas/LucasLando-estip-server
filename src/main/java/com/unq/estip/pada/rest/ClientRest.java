@@ -10,8 +10,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.unq.estip.pada.errors.ErrorCodes;
 import com.unq.estip.pada.model.Client;
 import com.unq.estip.pada.service.ClientService;
 
@@ -41,8 +43,12 @@ public class ClientRest {
 	@Path("/remove")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response removeClient(@FormParam("firstName") String name, @FormParam("lastName") String lastName) {
-		clientService.removeClient(name, lastName);
-		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+		try{
+			clientService.removeClient(name, lastName);
+			return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+		}catch(DataIntegrityViolationException e){
+			return Response.serverError().header("Access-Control-Allow-Origin", "*").entity(ErrorCodes.CLIENT_IN_USE).build();
+		}
 	}
 	
 	
