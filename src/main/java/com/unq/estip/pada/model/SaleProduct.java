@@ -19,7 +19,7 @@ public class SaleProduct {
 	@GeneratedValue
 	private Integer id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
 	private Product product;
 	
 	@Column

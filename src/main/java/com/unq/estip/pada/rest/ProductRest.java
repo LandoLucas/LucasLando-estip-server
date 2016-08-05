@@ -10,8 +10,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.unq.estip.pada.errors.ErrorCodes;
 import com.unq.estip.pada.model.Product;
 import com.unq.estip.pada.model.Unit;
 import com.unq.estip.pada.service.ProductService;
@@ -56,8 +58,12 @@ public class ProductRest {
 	@Path("/remove")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response removeProduct(@FormParam("name") String name, @FormParam("quantity") String quantity) {
-		productService.removeProduct(name, Utilities.parseDouble(quantity));
-		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+		try{
+			productService.removeProduct(name, Utilities.parseDouble(quantity));	
+			return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+		}catch(DataIntegrityViolationException e){
+			return Response.serverError().header("Access-Control-Allow-Origin", "*").entity(ErrorCodes.RESOURCE_IN_USE).build();
+		}
 	}
 
 	@GET
