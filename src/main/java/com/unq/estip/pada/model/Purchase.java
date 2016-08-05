@@ -14,7 +14,7 @@ import org.joda.time.DateTime;
 
 @Entity
 @Table(name = "Purchase")
-@Proxy(lazy=true)
+@Proxy(lazy=false)
 public class Purchase {
 
 	@Id

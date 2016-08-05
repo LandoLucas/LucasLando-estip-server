@@ -69,7 +69,6 @@ public class Store {
 		this.address = address;
 	}
 
-
 	public Store() {}
 
 	public Store(String name, String telephone, String cellphone, String address) {

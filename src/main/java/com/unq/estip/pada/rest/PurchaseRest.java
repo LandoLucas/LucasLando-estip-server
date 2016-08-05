@@ -40,7 +40,7 @@ public class PurchaseRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(PurchaseDTO purchase) {
 		purchaseService.savePurchase(purchase);
-		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(this.purchaseService.findAll()).build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 
 	
@@ -49,7 +49,7 @@ public class PurchaseRest {
 	@Consumes("application/x-www-form-urlencoded")
 	public Response delete(@FormParam("id") String id) {
 		purchaseService.remove(Integer.valueOf(id));
-		return Response.ok().header("Access-Control-Allow-Origin", "*").entity(this.purchaseService.findAll()).build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
 	}
 	
 }
