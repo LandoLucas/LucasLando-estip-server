@@ -10,8 +10,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.unq.estip.pada.errors.ErrorCodes;
 import com.unq.estip.pada.model.Store;
 import com.unq.estip.pada.service.StoreService;
 
@@ -47,8 +49,12 @@ public class StoresRest {
 	@Path("/remove")
 	@Consumes("application/x-www-form-urlencoded")
 	public Response removeStore(@FormParam("id") String id) {
-		storeService.removeStore(Integer.valueOf(id));
-		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+		try{
+			storeService.removeStore(Integer.valueOf(id));
+			return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+		}catch(DataIntegrityViolationException e){
+			return Response.serverError().header("Access-Control-Allow-Origin", "*").entity(ErrorCodes.STORE_IN_USE).build();
+		}
 	}
 	
 }
