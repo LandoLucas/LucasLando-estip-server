@@ -77,6 +77,18 @@ public class Sale {
 	public void setDate(DateTime date) {
 		this.date = date;
 	}
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public List<SaleProduct> getProducts() {
+		return products;
+	}
+
+	public DateTime getDate() {
+		return date;
+	}
 
 	public Sale(Client client, List<SaleProduct> products, Double price, DateTime date, SaleState state) {
 		super();

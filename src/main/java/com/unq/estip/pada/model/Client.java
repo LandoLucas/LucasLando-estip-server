@@ -45,6 +45,17 @@ public class Client {
 	}
 
 
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public String getCellphone() {
+		return cellphone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;

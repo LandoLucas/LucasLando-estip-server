@@ -37,6 +37,14 @@ public class Purchase {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public Store getStore() {
+		return store;
+	}
+
+	public DateTime getDate() {
+		return date;
+	}
 
 	public void setStore(Store store) {
 		this.store = store;

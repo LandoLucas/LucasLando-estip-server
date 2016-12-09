@@ -47,7 +47,7 @@ public class DatabaseInitializer {
 		
 		this.clientService.save(null, "Lalo", "Landa", "4111-1212", "15-6565-4545", "direccion 1");
 		this.clientService.save(null, "Frank", "Grimes", "", "5411-1111-2222", "");
-		this.clientService.save(null, "Otto", "", "4222-1212", "", "");
+		this.clientService.save(null, "Otto", "", "", "", "");
 		this.clientService.save(null, "Lionel", "Hutz", "", "", "direccion 4 piso 3");
 		
 		System.out.println("Database populated");

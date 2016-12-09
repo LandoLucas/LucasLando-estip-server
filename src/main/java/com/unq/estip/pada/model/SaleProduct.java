@@ -33,6 +33,18 @@ public class SaleProduct {
 		this.product = product;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
