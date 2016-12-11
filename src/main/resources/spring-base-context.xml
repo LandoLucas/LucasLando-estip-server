@@ -139,5 +139,11 @@
 	<bean id="purchaseRest" class="com.unq.estip.pada.rest.PurchaseRest">
 		<property name="purchaseService" ref="purchaseService" />
 	</bean>
+	
+	<!-- LOGIN -->
+	<bean id="loginRest" class="com.unq.estip.pada.rest.LoginRest">
+<!-- 		<property name="sessionFactory" ref="persistence.sessionFactory" /> -->
+	</bean>
+	
 
 </beans>
