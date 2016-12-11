@@ -141,9 +141,17 @@
 	</bean>
 	
 	<!-- LOGIN -->
-	<bean id="loginRest" class="com.unq.estip.pada.rest.LoginRest">
-<!-- 		<property name="sessionFactory" ref="persistence.sessionFactory" /> -->
+	<bean id="loginDAO" class="com.unq.estip.pada.persistence.LoginDAO">
+		<property name="sessionFactory" ref="persistence.sessionFactory" />
 	</bean>
+	<bean id="loginService" class="com.unq.estip.pada.service.LoginService">
+		<property name="loginDAO" ref="loginDAO" />
+	</bean>
+	<bean id="loginRest" class="com.unq.estip.pada.rest.LoginRest">
+		<property name="loginService" ref="loginService" />
+	</bean>
+	
+	
 	
 
 </beans>

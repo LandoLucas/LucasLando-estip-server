@@ -8,28 +8,32 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
 
+import com.unq.estip.pada.errors.LoginException;
+import com.unq.estip.pada.service.LoginService;
+
 @Service
 @Path("/login")
 public class LoginRest {
 
+	private LoginService loginService;
+	
+	public LoginService getLoginService() {
+		return loginService;
+	}
+
+	public void setLoginService(LoginService loginService) {
+		this.loginService = loginService;
+	}
+
 	@POST
 	@Consumes("application/x-www-form-urlencoded")
-	public Response saveOrUpdateClient(@FormParam("username") String user, @FormParam("password") String password ) {
-		
-		System.out.println(user + " " + password);
-		
-//		clientService.save(id, name, lastName, telephone, cellphone, address);
-		
-		if( Math.random() < 0.5){
-			System.out.println("ok!");
+	public Response login(@FormParam("username") String user, @FormParam("password") String password ) {
+		try{
+			loginService.login(user, password);
 			return Response.ok().header("Access-Control-Allow-Origin", "*").build();
-		}else{
-			System.out.println("not ok ");
+		}catch(LoginException e){
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		
-		
 	}
 	
-
 }
