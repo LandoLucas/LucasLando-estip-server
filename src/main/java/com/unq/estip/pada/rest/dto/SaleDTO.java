@@ -10,9 +10,19 @@ public class SaleDTO {
 	private Double price;
 	private String date;
 	private String time;
+	private String comment;
 
+	
 
-	public Integer getId() {
+	public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 
@@ -60,25 +70,19 @@ public class SaleDTO {
 		this.products = products;
 	}
 
-	public SaleDTO(Integer id, int clientID, List<ProductsDTO> products, Double price, String date, String time) {
-		super();
-		this.id = id;
-		this.clientID = clientID;
-		this.products = products;
-		this.price = price;
-		this.date = date;
-		this.time = time;
-	}
 
-//	public SaleDTO(int clientID, List<ProductsDTO> products, Double price, String date, String time) {
-//		super();
-//		this.clientID = clientID;
-//		this.products = products;
-//		this.price = price;
-//		this.date = date;
-//		this.time = time;
-//	}
+	public SaleDTO(Integer id, int clientID, List<ProductsDTO> products, Double price, String date, String time,
+            String comment) {
+        super();
+        this.id = id;
+        this.clientID = clientID;
+        this.products = products;
+        this.price = price;
+        this.date = date;
+        this.time = time;
+        this.comment = comment;
+    }
 
-	public SaleDTO(){}
+    public SaleDTO(){}
 	
 }

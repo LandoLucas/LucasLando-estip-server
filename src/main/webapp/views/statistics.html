@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <form name="myForm" class="jumbotron">
+			    <label for="repeatSelect"> Seleccionar a&ntilde;o: </label>
+			    <select ng-model="selectedYear" ng-change="update()" class="form-group">
+			      <option ng-repeat="year in years" value="{{year}}">{{year}}</option>
+			    </select>
+	</form>
+    <div class="row">
+    	<div class="col-xs-6">
+        	 Ingresos y gastos mensuales
+			<canvas id="line" class="chart chart-line" chart-data="igdata"
+				chart-labels="monthlabels" chart-series="igseries" chart-options="options"
+				chart-dataset-override="datasetOverride" chart-click="onClick"
+			</canvas> 
+        </div>
+    
+        <div class="col-xs-6">
+        	Productos vendidos {{selectedYear}}
+            <canvas id="pie" class="chart chart-pie"
+				  chart-data="pv2016data" chart-labels="pv2016labels">
+			</canvas>
+        </div>
+        <div class="col-xs-6">
+        	Ventas mensuales {{selectedYear}}
+			<canvas id="bar" class="chart chart-bar"
+  				  chart-data="vm2016data" chart-labels="monthlabels"> chart-series="series"
+			</canvas
+        </div>
+        	
+    </div>
+</div>
+
+
+
+ 

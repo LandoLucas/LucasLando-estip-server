@@ -41,8 +41,21 @@ public class Sale {
 	
 	@Column
 	private SaleState state;
+	
+	@Column
+	private String comment;
 
-	public Integer getId() {
+	
+	
+	public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 
@@ -90,16 +103,19 @@ public class Sale {
 		return date;
 	}
 
-	public Sale(Client client, List<SaleProduct> products, Double price, DateTime date, SaleState state) {
-		super();
-		this.client = client;
-		this.products = products;
-		this.price = price;
-		this.date = date;
-		this.state = state;
-	}
 
-	public Sale() {
+	public Sale(Client client, List<SaleProduct> products, Double price, DateTime date, SaleState state,
+            String comment) {
+        super();
+        this.client = client;
+        this.products = products;
+        this.price = price;
+        this.date = date;
+        this.state = state;
+        this.comment = comment;
+    }
+
+    public Sale() {
 		super();
 	}
 

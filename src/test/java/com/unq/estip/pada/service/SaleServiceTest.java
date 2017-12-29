@@ -36,7 +36,7 @@ public class SaleServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	public void saveAndRemove(){
 		List<ProductsDTO> products = new ArrayList<ProductsDTO>();
 		products.add(new ProductsDTO(1, "prod", 120d, 1));
-		SaleDTO saleDTO = new SaleDTO(null, 1, products, 120d, DateTime.now().toString(), DateTime.now().toString());
+		SaleDTO saleDTO = new SaleDTO(null, 1, products, 120d, DateTime.now().toString(), DateTime.now().toString(), "");
 		
 		saleService.save(saleDTO);
 		
@@ -53,14 +53,14 @@ public class SaleServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	public void update(){
 		List<ProductsDTO> products = new ArrayList<ProductsDTO>();
 		products.add(new ProductsDTO(1, "prod", 120d, 1));
-		SaleDTO saleDTO = new SaleDTO(null, 1, products, 120d, DateTime.now().toString(), DateTime.now().toString());
+		SaleDTO saleDTO = new SaleDTO(null, 1, products, 120d, DateTime.now().toString(), DateTime.now().toString(), "");
 		
 		saleService.save(saleDTO);
 		
 		List<Sale> sales = saleService.findAll();
 		Sale s = sales.get(0);
 		s.setPrice(240d);
-		SaleDTO saleDTO2 = new SaleDTO(s.getId(), 1, products, 240d, DateTime.now().toString(), DateTime.now().toString());
+		SaleDTO saleDTO2 = new SaleDTO(s.getId(), 1, products, 240d, DateTime.now().toString(), DateTime.now().toString(), "");
 		saleService.save(saleDTO2);
 		
 		sales = saleService.findAll();
@@ -72,7 +72,7 @@ public class SaleServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	public void changeState(){
 		List<ProductsDTO> products = new ArrayList<ProductsDTO>();
 		products.add(new ProductsDTO(1, "prod", 120d, 1));
-		SaleDTO saleDTO = new SaleDTO(null, 1, products, 120d, DateTime.now().toString(), DateTime.now().toString());
+		SaleDTO saleDTO = new SaleDTO(null, 1, products, 120d, DateTime.now().toString(), DateTime.now().toString(), "");
 		
 		saleService.save(saleDTO);
 		

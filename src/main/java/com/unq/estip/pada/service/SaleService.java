@@ -62,13 +62,14 @@ public class SaleService {
 		
 		Sale sale;
 		if(saleDTO.getId() == null){
-			sale = new Sale(client, saleProducts, saleDTO.getPrice(), date, SaleState.Pedido);
+			sale = new Sale(client, saleProducts, saleDTO.getPrice(), date, SaleState.Pedido, saleDTO.getComment());
 		}else{
 			sale = saleDAO.findById(saleDTO.getId());
 			sale.setClient(client);
 			sale.setProducts(saleProducts);
 			sale.setPrice(saleDTO.getPrice());
 			sale.setDate(date);
+			sale.setComment(saleDTO.getComment());
 		}
 		
 		this.saleProductDAO.save(saleProducts);
