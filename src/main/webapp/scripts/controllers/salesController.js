@@ -6,6 +6,8 @@ padaApp.controller('salesController', ['$scope' ,'restClient', function(scope, r
 	    return new Date(sale.date);
 	};
 	
+	scope.saleOrder = "id";
+	
 	scope.selectedProducts = [];
 	scope.totalPriceSeletedProducts = 0;
 	
@@ -28,7 +30,14 @@ padaApp.controller('salesController', ['$scope' ,'restClient', function(scope, r
 	
 	scope.isCollapsed = true;
 	
-
+	scope.getOrder = function(sale){
+		if(scope.saleOrder == "id") return sale.id;
+		if(scope.saleOrder == "firstName") return sale.client.firstName;
+		if(scope.saleOrder == "lastName") return sale.client.lastName;
+		if(scope.saleOrder == "date") return sale.date;
+		if(scope.saleOrder == "price") return sale.price;
+	}
+		
 	//Adds products in new sale
 	scope.addProduct = function(){
 		

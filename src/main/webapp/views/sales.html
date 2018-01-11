@@ -85,13 +85,31 @@
 
 	<div>
 	 	
-	 	<input type="text" class="form-control" placeholder="Buscar" ng-model="searchText"/>
+	 	<label for="singleSelect">Buscar en ventas:</label>
+ 		<input type="text" class="form-control col-xs-3" placeholder="Buscar" ng-model="searchText"/>
+	 		
+ 		<hr>
+	 	
 	 	<input type="text" class="form-control" placeholder="Sub-busqueda" ng-model="searchText2" ng-hide="!searchText"/>
+	 	
+	 	<hr>
+	 		
+ 		<label for="singleSelect">Ordenar ventas por:</label>
+		<select class="form-control" ng-model="saleOrder">
+			<option value="id" selected>Numero de venta</option>
+		    <option value="firstName">Nombre</option>
+		    <option value="lastName">Apellido</option>
+		    <option value="date">Fecha</option>
+		    <option value="price">Precio</option>
+		</select>
+
+		<hr>
+	 	
 	 	<button class="btn btn-info btn-block" type="button" ng-click="hideDelivered = ! hideDelivered ; toggle = ! toggle">
 	 		<span ng-show="toggle">Ocultar ventas entregadas</span>
     		<span ng-hide="toggle">Mostrar ventas entregadas</span>
 	 	</button>
-	  	<div ng-repeat="sale in sales | orderBy: sale.id | filter:searchText | filter:searchText2">
+	  	<div ng-repeat="sale in sales | orderBy:getOrder | filter:searchText | filter:searchText2">
 		  	<div class="panel panel-default" ng-hide="{{sale.state === 'Entregado'}} && hideDelivered" ng-show="{{sale.state !== 'Entregado'}}">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
