@@ -36,7 +36,10 @@ public class ClientService {
 	public void removeClient(String name, String lastName) {
 		List<Client> allClients = this.clientDAO.findAll();
 		for(Client c : allClients){
-			if(c.getFirstName().equals(name) && c.getLastName().equals(lastName)) this.clientDAO.delete(c); break; 				
+			if(c.getFirstName().equals(name) && c.getLastName().equals(lastName)) {
+			    c.setDeleted(true);
+			    this.clientDAO.save(c); break; 				
+			}
 		}
 	}
 

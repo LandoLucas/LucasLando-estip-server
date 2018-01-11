@@ -28,8 +28,19 @@ public class Store {
 	
 	@Column
 	private String address;
+	
+	@Column
+	private Boolean deleted = false;
+	
+    public Boolean getDeleted() {
+        return deleted;
+    }
 
-	public Integer getId() {
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 

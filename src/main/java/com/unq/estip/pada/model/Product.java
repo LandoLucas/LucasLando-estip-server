@@ -34,7 +34,18 @@ public class Product {
 	@Column
 	private Unit unit;
 	
-	public String getName() {
+	@Column
+	private Boolean deleted = false;
+	
+	public Boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getName() {
 		return name;
 	}
 	

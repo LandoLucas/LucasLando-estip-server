@@ -5,8 +5,8 @@ padaApp.controller('statisticsController', ['$scope' ,'restClient', function(sco
 	scope.monthlabels = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 	
 	var maxYear = new Date().getFullYear();
-	var minYear = 2015;
-	scope.selectedYear = 2016;
+	var minYear = 2016;
+	scope.selectedYear = maxYear;
 	
 	scope.years = [];
 	for(var i=minYear; i <= maxYear; i++){

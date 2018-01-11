@@ -17,8 +17,8 @@ public class ProductDAO extends HibernateGenericDAO<Product> implements GenericR
 	}
 
 	public void removeProductByNameAndQuantity(String name, double quantity) {
-		this.getHibernateTemplate().bulkUpdate("delete from "+getDomainClass().getName()+
-				" where name="+"'"+name+"' and " + "quantity="+"'"+quantity+"'");
+		this.getHibernateTemplate().bulkUpdate("update "+getDomainClass().getName()+
+				" set deleted = true where name="+"'"+name+"' and " + "quantity="+"'"+quantity+"'");
 	}
 
 	

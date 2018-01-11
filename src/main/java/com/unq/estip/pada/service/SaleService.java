@@ -77,7 +77,9 @@ public class SaleService {
 	}
 
 	public void removeSale(Integer id) {
-		this.saleDAO.deleteById(id);
+	    Sale s = saleDAO.findById(id);
+	    s.setDeleted(true);
+		this.saleDAO.save(s);
 	}
 
 	public void changeState(Integer id, SaleState state) {

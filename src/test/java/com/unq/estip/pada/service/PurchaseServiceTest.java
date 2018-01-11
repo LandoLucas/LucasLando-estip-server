@@ -55,13 +55,16 @@ public class PurchaseServiceTest extends AbstractTransactionalJUnit4SpringContex
 		
 		purchaseService.savePurchase(purchase);
 		
-		purchase.setId(1);
+		List<Purchase> purchases = purchaseService.findAll();
+        assertEquals( 1 , purchases.size());
+        
+		purchase.setId(purchaseService.findAll().get(0).getId());
 		purchase.setPrice(11d);
 		
 		purchaseService.savePurchase(purchase);
 		
-		List<Purchase> purchases = purchaseService.findAll();
-		assertEquals( 1 , purchases.size());
+		purchases = purchaseService.findAll();
+        assertEquals( 1 , purchases.size());
 		assertEquals( 11d , purchases.get(0).getPrice(), 0.0001);
 	}
 	

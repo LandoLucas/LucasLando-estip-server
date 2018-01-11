@@ -19,8 +19,8 @@ public class User {
 	
 	@Column
 	private String password;
-
-	public User(String username) {
+	
+    public User(String username) {
 		this.username = username;
 	}
 

@@ -29,8 +29,19 @@ public class Purchase {
 	
 	@Column @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime date;
+	
+	@Column
+	private Boolean deleted = false;
+	
+	public Boolean isDeleted() {
+        return deleted;
+    }
 
-	public Integer getId() {
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Integer getId() {
 		return id;
 	}
 

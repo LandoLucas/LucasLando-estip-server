@@ -34,7 +34,9 @@ public class StoreService {
 	}
 
 	public void removeStore(int id) {
-		this.storeDAO.deleteById(id);
+	    Store s = storeDAO.findById(id);
+	    s.setDeleted(true);
+		this.storeDAO.save(s);
 	}
 
 }

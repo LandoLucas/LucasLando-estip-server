@@ -45,9 +45,18 @@ public class Sale {
 	@Column
 	private String comment;
 
+	@Column
+	private Boolean deleted = false;
 	
-	
-	public String getComment() {
+	public Boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getComment() {
         return comment;
     }
 

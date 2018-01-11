@@ -18,20 +18,19 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 
 	@Override
 	public void delete(final T entity) {
-		this.getHibernateTemplate().delete(entity);
+	    throw new RuntimeException("Can't call delete, use update instead");
 	}
-
+	
 	@Override
 	public void deleteById(final Serializable id) {
-		T obj = this.findById(id);
-		this.getHibernateTemplate().delete(obj);
+	    throw new RuntimeException("Can't call delete, use update instead");
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		return this.getHibernateTemplate().find(
-				"from " + this.persistentClass.getName() + " o");
+				"from " + this.persistentClass.getName() + " o where deleted = false or deleted = null"); // where not (deleted = true) 
 	}
 
 	@Override
@@ -42,7 +41,10 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport
 
 	@Override
 	public T findById(final Serializable id) {
-		return this.getHibernateTemplate().get(this.persistentClass, id);
+	    List<T> l = this.getHibernateTemplate().find(
+                "from " + this.persistentClass.getName() + " o where  id = " + id); //(deleted = false or deleted = null) and
+	    if(l.size() > 0) return l.get(0);
+	    return null;
 	}
 
 	protected abstract Class<T> getDomainClass();

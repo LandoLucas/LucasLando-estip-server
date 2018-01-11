@@ -24,7 +24,7 @@ public class SaleProduct {
 	
 	@Column
 	private int quantity;
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}

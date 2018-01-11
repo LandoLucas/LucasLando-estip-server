@@ -35,8 +35,19 @@ public class Client {
 	
 	@Column
 	private String address;
+	
+	@Column
+	private Boolean deleted = false;
+	
+	public Boolean isDeleted() {
+        return deleted;
+    }
 
-	public String getFirstName() {
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getFirstName() {
 		return firstName;
 	}
 	

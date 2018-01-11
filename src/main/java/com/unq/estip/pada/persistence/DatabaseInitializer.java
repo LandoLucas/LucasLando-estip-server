@@ -2,8 +2,7 @@ package com.unq.estip.pada.persistence;
 
 import javax.annotation.PostConstruct;
 
-import com.unq.estip.pada.model.Unit;
-import com.unq.estip.pada.model.User;
+import com.unq.estip.pada.model.Store;
 import com.unq.estip.pada.service.ClientService;
 import com.unq.estip.pada.service.ProductService;
 import com.unq.estip.pada.service.SaleService;
@@ -60,6 +59,9 @@ public class DatabaseInitializer {
 	@PostConstruct
 	public void populateDatabase(){
 		System.out.println("Populating database");
+//		for(Store s : this.storeService.findAll()) {
+//		    System.out.println(s.getName());
+//		}
 		
 //		this.storeService.save(null, "Mercado Juan", "Calle falsa 123", "555-5555", "15-5265-5625");
 //		this.storeService.save(null, "Tienda Pepe", "", "", "");

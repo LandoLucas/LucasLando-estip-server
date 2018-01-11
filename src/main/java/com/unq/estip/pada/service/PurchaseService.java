@@ -39,7 +39,10 @@ public class PurchaseService {
 	}
 
 	public void remove(Integer id) {
-		purchaseDAO.deleteById(id);
+	    Purchase p = purchaseDAO.findById(id);
+	    List<Purchase> pp = purchaseDAO.findAll();
+	    p.setDeleted(true);
+		purchaseDAO.update(p);
 	}
 	
 }
