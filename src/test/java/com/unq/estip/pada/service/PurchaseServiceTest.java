@@ -3,6 +3,7 @@ package com.unq.estip.pada.service;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
+import java.util.Map;
 
 import org.joda.time.DateTime;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class PurchaseServiceTest extends AbstractTransactionalJUnit4SpringContex
 	
 	@Test
 	public void findAll(){
-		List<Purchase> purchases = purchaseService.findAll();
+		Map<Integer, List<Purchase>>purchases = purchaseService.findAllGroupedByYear();
 		assertEquals( 0 , purchases.size());
 	}
 	
@@ -38,11 +39,11 @@ public class PurchaseServiceTest extends AbstractTransactionalJUnit4SpringContex
 		
 		purchaseService.savePurchase(purchase);
 		
-		List<Purchase> purchases = purchaseService.findAll();
+		Map<Integer, List<Purchase>> purchases = purchaseService.findAllGroupedByYear();
 		assertEquals( 1 , purchases.size());
 		
-		purchaseService.remove(purchases.get(0).getId());
-		purchases = purchaseService.findAll();
+		purchaseService.remove(purchases.get(DateTime.now().getYear()).get(0).getId());
+		purchases = purchaseService.findAllGroupedByYear();
 		assertEquals( 0 , purchases.size());
 	}
 	
@@ -55,17 +56,17 @@ public class PurchaseServiceTest extends AbstractTransactionalJUnit4SpringContex
 		
 		purchaseService.savePurchase(purchase);
 		
-		List<Purchase> purchases = purchaseService.findAll();
+		Map<Integer, List<Purchase>> purchases = purchaseService.findAllGroupedByYear();
         assertEquals( 1 , purchases.size());
         
-		purchase.setId(purchaseService.findAll().get(0).getId());
+		purchase.setId(purchaseService.findAllGroupedByYear().get(DateTime.now().getYear()).get(0).getId());
 		purchase.setPrice(11d);
 		
 		purchaseService.savePurchase(purchase);
 		
-		purchases = purchaseService.findAll();
+		purchases = purchaseService.findAllGroupedByYear();
         assertEquals( 1 , purchases.size());
-		assertEquals( 11d , purchases.get(0).getPrice(), 0.0001);
+		assertEquals( 11d , purchases.get(DateTime.now().getYear()).get(0).getPrice(), 0.0001);
 	}
 	
 }

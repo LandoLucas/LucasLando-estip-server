@@ -1,6 +1,7 @@
 package com.unq.estip.pada.rest;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -27,6 +28,14 @@ public class PurchaseRest {
 		this.purchaseService = purchaseService;
 	}
 
+	@GET
+    @Path("/grouped")
+    @Produces("application/json")
+    public Response getAllGroupedByYear() {
+		Map<Integer, List<Purchase>> m = this.purchaseService.findAllGroupedByYear();
+    	return Response.ok().header("Access-Control-Allow-Origin", "*").entity(m).build();
+    }
+	
 	@GET
     @Path("/all")
     @Produces("application/json")

@@ -28,7 +28,7 @@ padaApp.controller('purchasesController', ['$scope' ,'restClient', function(scop
 		};
 		
 		var success = function(response){
-			restClient.sendGetWithoutErrorCallback(scope.getAllOk, '/purchase/all');
+			restClient.sendGetWithoutErrorCallback(scope.getAllOk, '/purchase/grouped');
 		}
 		
 		restClient.sendPostAsJsonWithoutErrorCallback(success, data, '/purchase/save');
@@ -46,21 +46,31 @@ padaApp.controller('purchasesController', ['$scope' ,'restClient', function(scop
 	//Callback obteniendo las compras
 	scope.getAllOk = function(response){
 		scope.allPurchases = response;
-		
-		console.log(scope.allPurchases);
-		
+		console.log(scope.allPurchases)
+	};
+	restClient.sendGetWithoutErrorCallback(scope.getAllOk, '/purchase/grouped');
+	
+	scope.getYear = function(purchases) {
+		return new Date(purchases[0].date).getFullYear();
+	};
+
+	scope.getTotalPrice = function(purchases){
 		var price = function(e){return e.price};
 		var add = function(x,y){ return x + y};
-		var prices = response.map( price );
-		scope.totalPrice = prices.reduce(add , 0);
-	};
-	restClient.sendGetWithoutErrorCallback(scope.getAllOk, '/purchase/all');
+		var prices = purchases.map( price );
+		return prices.reduce(add , 0);
+	}
+	
+	scope.groupByYear = function(p){
+		console.log(new Date(p.date).getFullYear())
+		return new Date(p.date).getFullYear();
+	}
 	
 	//Borrar compra
 	scope.remove = function(p){
 		
 		var success = function(response){
-			restClient.sendGetWithoutErrorCallback(scope.getAllOk, '/purchase/all');
+			restClient.sendGetWithoutErrorCallback(scope.getAllOk, '/purchase/grouped');
 		}
 
 		restClient.sendPostWithoutErrorCallback(success, {id: p.id}, '/purchase/delete');

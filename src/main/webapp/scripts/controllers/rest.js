@@ -2,10 +2,10 @@ angular.module('restClient', []).factory('restClient', ['$http', '$location', '$
 
 	var baseUrl = location.host();
 	
-	var apiUrl = "http://52.11.222.208:8080/pada-server/rest";
+	var apiUrl = "http://52.11.222.208:8080/pada/rest";
 	
 	if( baseUrl === "localhost"){
-		apiUrl = "http://localhost:8081/pada/rest";
+		apiUrl = "http://localhost:8080/pada/rest";
 	}
 
 	var defaultErrorCallback = function(response){

@@ -48,7 +48,7 @@ public class ClientDAOTest extends AbstractTransactionalJUnit4SpringContextTests
         clientDAO.update(c);
         assertEquals(0, clientDAO.findAll().size());
 
-        assertNull(clientDAO.findById(cs.get(0).getId()));
+        assertTrue(clientDAO.findById(cs.get(0).getId()).isDeleted());
     }
     
     @Test

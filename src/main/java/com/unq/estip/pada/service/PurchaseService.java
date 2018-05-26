@@ -1,6 +1,9 @@
 package com.unq.estip.pada.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.joda.time.DateTime;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +26,23 @@ public class PurchaseService {
 
 	public void setPurchaseDAO(PurchaseDAO purchaseDAO) {
 		this.purchaseDAO = purchaseDAO;
+	}
+	
+	public Map<Integer, List<Purchase>> findAllGroupedByYear(){
+		Map<Integer, List<Purchase>> m = new HashMap<Integer, List<Purchase>>();
+		List<Purchase> purchases = purchaseDAO.findAll();
+		
+		for(Purchase p : purchases) {
+			if(m.containsKey(p.getDate().getYear())) {
+				m.get(p.getDate().getYear()).add(p);
+			}else {
+				List<Purchase> ps = new ArrayList<Purchase>();
+				ps.add(p);
+				m.put(p.getDate().getYear(), ps);
+			}
+		}
+		
+		return m;
 	}
 	
 	public List<Purchase> findAll(){
