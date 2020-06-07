@@ -6,7 +6,7 @@ padaApp.controller('salesController', ['$scope' ,'restClient', function(scope, r
 	    return new Date(sale.date);
 	};
 	
-	scope.saleOrder = "id";
+	scope.saleOrder = "date";
 	
 	scope.selectedProducts = [];
 	scope.totalPriceSeletedProducts = 0;
@@ -203,6 +203,23 @@ padaApp.controller('salesController', ['$scope' ,'restClient', function(scope, r
 	
 	scope.getAllSalesOk = function(response){
 		scope.sales = response;
+		scope.years = [];
+		scope.months = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+		for(var i=0; i < scope.sales.length; i ++) {
+			var d = new Date(scope.sales[i].date);
+			var year = d.getFullYear()
+			var month = d.getMonth()
+			if(scope.years.indexOf(year) <= -1){
+				scope.years.push(year)
+			}
+			scope.sales[i].year = year // augment sale with year and month
+			switch(month) {
+			  case 0: m = "Enero"; break; case 1: m = "Febrero"; break; case 2: m = "Marzo"; break; case 3: m = "Abril"; break; 
+			  case 4: m = "Mayo"; break; case 5: m = "Junio"; break; case 6: m = "Julio"; break; case 7: m = "Agosto"; break;
+			  case 8: m = "Septiembre"; break; case 9: m = "Octubre"; break; case 10: m = "Noviembre"; break; case 11: m = "Diciembre"; break;
+			}
+			scope.sales[i].month = m
+		}
 	}
 	restClient.sendGetWithoutErrorCallback(scope.getAllSalesOk, '/sales/all');
 	

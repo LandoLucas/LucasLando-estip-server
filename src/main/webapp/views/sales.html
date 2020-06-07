@@ -96,20 +96,38 @@
 	 		
  		<label for="singleSelect">Ordenar ventas por:</label>
 		<select class="form-control" ng-model="saleOrder">
-			<option value="id" selected>Numero de venta</option>
+			<option value="date" selected>Fecha</option>
 		    <option value="firstName">Nombre</option>
 		    <option value="lastName">Apellido</option>
-		    <option value="date">Fecha</option>
+		    <option value="id">Numero de venta</option>
 		    <option value="price">Precio</option>
 		</select>
 
 		<hr>
+		
+		<div class="form-group col-xs-5">
+			<label for="year">A&ntilde;o:</label> 
+			<select class="form-control" ng-model="selectedYear">
+				<option></option>
+				<option ng-repeat="year in years">{{year}}</option>
+			</select>
+		</div>
+		
+		<div class="form-group col-xs-5">
+			<label for="year">Mes</label> 
+			<select class="form-control" ng-model="selectedMonth">
+				<option></option>
+				<option ng-repeat="month in months">{{month}}</option>
+			</select>
+		</div>
+		
 	 	
 	 	<button class="btn btn-info btn-block" type="button" ng-click="hideDelivered = ! hideDelivered ; toggle = ! toggle">
 	 		<span ng-show="toggle">Ocultar ventas entregadas</span>
     		<span ng-hide="toggle">Mostrar ventas entregadas</span>
 	 	</button>
-	  	<div ng-repeat="sale in sales | orderBy:getOrder | filter:searchText | filter:searchText2">
+	 	<br>
+	  	<div ng-repeat="sale in sales | orderBy:getOrder | filter:selectedYear | filter:selectedMonth | filter:searchText | filter:searchText2">
 		  	<div class="panel panel-default" ng-hide="{{sale.state === 'Entregado'}} && hideDelivered" ng-show="{{sale.state !== 'Entregado'}}">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
